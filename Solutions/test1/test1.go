@@ -1,0 +1,47 @@
+// ✅ Exercise: Word Frequency Counter
+// ✳️ Task:
+// Write a function called WordCount(s string) map[string]int that takes a string and returns a map where the keys are words and the values are how many times each word appears.
+
+// ✳️ Requirements:
+// Words are separated by spaces.
+// The function should be case-insensitive (i.e., "Go" and "go" are the same word).
+// Ignore punctuation (you can define punctuation as: , . ! ?).
+// ✳️ Example:
+// input := "Go go go! Time to Go, now."
+// result := WordCount(input)
+// fmt.Println(result)
+// ✅ Expected Output:
+//
+//	map[string]int{
+//	    "go":   4,
+//	    "time": 1,
+//	    "to":   1,
+//	    "now":  1,
+//	}
+//
+// ✳️ Hints:
+// Use strings lib****
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func WordCount(s string) map[string]int {
+	words := strings.Fields(strings.ToLower(s))
+	m := make(map[string]int)
+	for _, word := range words {
+		word = strings.Trim(word, "?!,.")
+		m[word]++
+
+	}
+	return m
+
+}
+
+func main() {
+	input := "Go go go! Time to Go, now. test"
+	result := WordCount(input)
+	fmt.Println(result)
+}
